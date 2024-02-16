@@ -1,0 +1,27 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Video Showcase</title>
+</head>
+<body>
+    <h1>Welcome to the AI Video Showcase</h1>
+    <div>
+        <h2>Videos</h2>
+        <ul>
+            {% for video in videos %}
+                <li>
+                    <h3>{{ video.title }}</h3>
+                    <p>{{ video.description }}</p>
+                    <video width="320" height="240" controls>
+                        <source src="{{ url_for('static', filename='videos/' ~ video.video_url) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{{ url_for('upload_video') }}">Upload a new video</a>
+</body>
+</html>
